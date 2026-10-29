@@ -7,13 +7,10 @@ on:
     workflow_dispatch:
 jobs:
     call_ci:
-        runs-on: ubuntu-latest
         if: github.event_name == 'pull_request'
-        steps:
-            - name: Trigger Hola Mundo
-              uses: ./.github/workflows/hola-mundo.yml
-              with:
-                greeting: "Te quiero mucho"
+        uses: ./.github/workflows/hola-mundo.yml
+        with:
+            greeting: "Te quiero mucho"
     scheduled:
         runs-on: ubuntu-latest
         if: github.event_name == 'schedule'
