@@ -13,15 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      # rustup + cargo
-      - name: Install cargo
-        uses: dtolnay/rust-toolchain@v1
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
 
-      # prevenir redescargado y recompilado de deps
-      - name: Cache Cargo dependencies
-        uses: Swatinem/rust-cache@v2
+      - name: Setup Rust and Cache
+        uses: moonrepo/setup-rust@v1
 
       - name: Run Code
         run: cargo run
