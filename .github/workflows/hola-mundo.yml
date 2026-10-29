@@ -1,5 +1,5 @@
 name: CI
-
+run-name: Aprendiendo GH Action!
 on:
   push:
     branches: ["main"]
@@ -20,6 +20,9 @@ jobs:
 
       - name: Setup Rust and Cache
         uses: moonrepo/setup-rust@v1
+
+      - name: Definir variable
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
 
       - name: Run Code
         run: cargo run
