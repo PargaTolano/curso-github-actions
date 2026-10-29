@@ -30,3 +30,6 @@ jobs:
               run: echo "NULL"
             - name: Imprimir Nombre
               run: echo "${{ inputs.greeting }}"
+            - name: Imprimir si tiene Hola
+              if: contains(inputs.greeting, 'Hola')
+              run: echo OMG HOLA TO YOU TOO!!!!!
