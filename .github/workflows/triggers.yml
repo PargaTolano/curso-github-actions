@@ -1,0 +1,28 @@
+name: triggers-practice
+run-name: Aprendiendo a usar triggers
+on:
+    pull_request:
+    schedule:
+        - cron: '0 * * * *'
+    workflow_dispatch:
+jobs:
+    call_ci:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'pull_request'
+        steps:
+            - name: Trigger Hola Mundo
+              uses: ./.github.workflows/ci.yml
+              with:
+                greeting: "Te quiero mucho"
+    scheduled:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'schedule'
+        steps:
+            - name: Print Scheduled Message
+              run: echo "Nueva hora imprimir"
+    manual:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'workflow_dispatch'
+        steps:
+            - name: Manual Print
+              run: echo "Imprimir manualmente"
