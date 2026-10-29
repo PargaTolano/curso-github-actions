@@ -1,0 +1,32 @@
+name: expressions
+run-name: Aprendiendo expresiones en Github Actions
+on:
+    issues:
+        types: [opened]
+    workflow_dispatch:
+        inputs:
+            show_null:
+                description: wether or not to print "NULL" to console
+                type: boolean
+                required: false
+                default: false
+            greeting:
+                description: greeting for whoever sees the output
+                type: string
+                required: true
+jobs:
+    print_issue:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'issues'
+        steps:
+            - name: Echo issue message
+              run: echo "ISSUE CREATED"
+    manual:
+        runs-on: ubuntu-latest
+        if: github.event_name == 'workflow_dispatch'
+        steps:
+            - name: Imprimir Nulo
+              if: inputs.show_null
+              run: echo "NULL"
+            - name: Imprimir Nombre
+              run: echo "${{ inputs.greeting }}"
