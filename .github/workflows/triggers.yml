@@ -11,7 +11,7 @@ jobs:
         if: github.event_name == 'pull_request'
         steps:
             - name: Trigger Hola Mundo
-              uses: ./.github/workflows/ci.yml
+              uses: ./.github/workflows/hola-mundo.yml
               with:
                 greeting: "Te quiero mucho"
     scheduled:
