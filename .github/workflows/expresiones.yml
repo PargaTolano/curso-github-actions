@@ -20,7 +20,7 @@ jobs:
         if: github.event_name == 'issues'
         steps:
             - name: Echo issue message
-              run: echo "ISSUE CREATED"
+              run: "echo 'ISSUE CREATED: ${{ github.event.issue.title }}'"
     manual:
         runs-on: ubuntu-latest
         if: github.event_name == 'workflow_dispatch'
