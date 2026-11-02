@@ -2,9 +2,36 @@ name: contexts
 run-name: Aprendiendo contextos en Github Actions
 on:
   push:
+permissions:
+  contents: write
 jobs:
   check-main:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - run: echo "Desplegando en la rama $GITHUB_REF"
+  save_step:
+    name: Verify Current Step
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+    - id: obtener_paso
+      run: echo "cur_step=${cat ./.github/script/STEP}" >> $GITHUB_OUTPUT
+    outputs:
+      paso_actual: ${{ steps.save_step.outputs.cur_step }}
+  if_step_is_4:
+    name: Si el step es 4
+    needs: save_step
+    runs-on: ubuntu-latest
+    if: !github.event.repository.is_template && needs.save_step.outputs.cur_step == 4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Actualizar paso a 5
+        uses: skills/action-update-step@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          from_step: 4
+          to_step: 5
+          branch_name: main
