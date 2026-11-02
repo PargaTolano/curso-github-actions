@@ -17,7 +17,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v7
     - id: obtener_paso
-      run: echo "cur_step=${cat ./.github/script/STEP}" >> $GITHUB_OUTPUT
+      run: echo "cur_step=$(cat ./.github/script/STEP)" >> $GITHUB_OUTPUT
     outputs:
       cur_step: ${{ steps.save_step.outputs.cur_step }}
   if_step_is_4:
