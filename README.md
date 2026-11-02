@@ -52,7 +52,7 @@ _Aprende los conceptos básicos para crear tu primer flujo de CI/CD para tus pro
   TBD-step-1-notes.
 -->
 
-<details id=1 open>
+<details id=1>
 <summary><h2>Paso 1: Crea tu primer workflow file</h2></summary>
 
 _¡Bienvenido al "Curso Básico de GitHub Actions"! :wave:_
@@ -344,7 +344,7 @@ Los más usados son:
   TBD-step-5-notes.
 -->
 
-<details id=5>
+<details id=5 open>
 <summary><h2>Paso 5: Aprende a usar las Variables de Entorno</h2></summary>
 
 ¡Ya estás a un paso de terminar! :heart:
