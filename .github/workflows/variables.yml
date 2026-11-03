@@ -10,4 +10,4 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v7
             - name: Imprimir nombre
-              run: echo "HOLA MI ESTIMADO ${{ env.NOMBRE }}"
+              run: echo "HOLA MI ESTIMADO $NOMBRE"
