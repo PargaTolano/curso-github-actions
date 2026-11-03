@@ -1,0 +1,13 @@
+name: variales
+run-name: Aprendiendo Variables en Github Actions
+on:
+    push:
+      branches: [master]
+jobs:
+    print_name:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v7
+            - name: Imprimir nombre
+              run: echo "HOLA MI ESTIMADO ${{ env.NOMBRE }}"
