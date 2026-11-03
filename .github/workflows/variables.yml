@@ -2,7 +2,7 @@ name: variales
 run-name: Aprendiendo Variables en Github Actions
 on:
     push:
-      branches: [master]
+      branches: [main]
 jobs:
     print_name:
         runs-on: ubuntu-latest
