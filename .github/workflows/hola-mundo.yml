@@ -1,13 +1,16 @@
 name: CI
 run-name: Aprendiendo GH Action!
 on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
   # allow manual run in Actions tab
   workflow_dispatch:
-
+  # allow other workflows to call this one
+  workflow_call:
+    inputs:
+      greeting:
+        description: "A message passed in from the caller"
+        type: string
+        required: false
+        default: "Hola"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,8 +24,11 @@ jobs:
       - name: Setup Rust and Cache
         uses: moonrepo/setup-rust@v1
 
-      - name: Definir variable
+      - name: Define variable
         run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+
+      - name: Show Input
+        run: echo "${{ inputs.greeting }}, $USERNAME"
 
       - name: Run Code
         run: cargo run
